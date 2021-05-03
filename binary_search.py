@@ -42,6 +42,28 @@ def binary_search(seq, number):
     return
 
 
+def recursive_binary_search(table, value, left_index, right_index):
+    """
+
+    :param table:
+    :param value:
+    :param left_index:
+    :param right_index:
+    :return:
+    """
+    middle = right_index // 2
+    while right_index >= left_index:
+        if table[middle] == value:
+            return middle
+        elif table[middle] < value:
+            left_index = middle + 1
+            middle = (left_index + right_index) // 2
+        elif table[middle] > value:
+            right_index = middle - 1
+            middle = (left_index + right_index) // 2
+    return -1
+
+
 def main(file_name, number):
     sequence = read_data(file_name=file_name, key='ordered_numbers')
 
